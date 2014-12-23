@@ -27,7 +27,6 @@ btc_mined : long
 trade_volume_usd : float
 difficulty : float
 minutes_between_blocks : float
-days_destroyed : float
 number_of_transactions : int
 hash_rate : float
 timestamp : long

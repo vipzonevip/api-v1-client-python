@@ -28,7 +28,6 @@ class Stats:
         self.trade_volume_usd = s['trade_volume_usd']
         self.difficulty = s['difficulty']
         self.minutes_between_blocks = s['minutes_between_blocks']
-        self.days_destroyed = s['days_destroyed']
         self.number_of_transactions = s['n_tx']
         self.hash_rate = s['hash_rate']
         self.timestamp = s['timestamp']

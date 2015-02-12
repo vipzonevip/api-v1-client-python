@@ -16,7 +16,7 @@ from blockchain import blockexplorer
 block = blockexplorer.get_block('000000000000000016f9a2c3e0f4c1245ff24856a79c34806969f5084f410680')
 ```
 
-####`get_transaction`
+####`get_tx`
 Get a single transaction based on a transaction index or hash. Returns a `Transaction` object.
 
 Params:
@@ -26,7 +26,7 @@ tx_id : str - transaction index or hash
 
 Usage:
 ```python
-tx = blockexplorer.get_transaction('d4af240386cdacab4ca666d178afc88280b620ae308ae8d2585e9ab8fc664a94')
+tx = blockexplorer.get_tx('d4af240386cdacab4ca666d178afc88280b620ae308ae8d2585e9ab8fc664a94')
 ```
 
 ####`get_block_height`

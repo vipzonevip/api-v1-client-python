@@ -16,11 +16,11 @@ else:
     from urllib2 import HTTPError
     from urllib import urlencode
 
-def call_api(resource, data = None):
+def call_api(resource, data = None, base_url = BASE_URL):
     try:
         payload = None if data is None else urlencode(data)
         if py_version >= 3 and payload is not None: payload = payload.encode('UTF-8')
-        response = urlopen(BASE_URL + resource, payload, timeout = TIMEOUT).read()
+        response = urlopen(base_url + resource, payload, timeout = TIMEOUT).read()
         return handle_response(response)
             
     except HTTPError as e:

@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='blockchain',
-      version='1.1.2',
+      version='1.2.0',
       description='Blockchain API library (v1)',
       author='Blockchain.info',
       author_email='support@blockchain.zendesk.com',

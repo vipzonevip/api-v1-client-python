@@ -3,13 +3,13 @@
 from distutils.core import setup
 
 setup(name='blockchain',
-      version='1.2.0',
+      version='1.2.1',
       description='Blockchain API library (v1)',
       author='Blockchain.info',
       author_email='support@blockchain.zendesk.com',
       url='https://github.com/blockchain/api-v1-client-python',
       license='MIT',
-      packages=['blockchain'],
+      packages=['blockchain', 'blockchain/v2'],
       keywords='blockchain.info api blockchain',
       classifiers=[
         "Development Status :: 5 - Production/Stable",

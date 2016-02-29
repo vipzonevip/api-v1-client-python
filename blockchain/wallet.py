@@ -55,7 +55,7 @@ class Wallet:
         :return: an instance of :class:`PaymentResponse` class
         """
         
-        params = self.build_basic_request()
+        params = self.build_basic_request(read_only=False)
 
         if len(recipients) == 1:
             to_address, amount = recipients.popitem()
@@ -180,9 +180,9 @@ class Wallet:
         self.parse_error(json_response)
         return json_response['active']
 
-    def build_basic_request(self):
+    def build_basic_request(self, read_only=True):
         params = {'password': self.password}
-        if self.second_password is not None:
+        if self.second_password is not None and read_only is False:
             params['second_password'] = self.second_password
         if self.api_code is not None:
             params['api_code'] = self.api_code

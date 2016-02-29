@@ -133,20 +133,6 @@ Usage:
 wallet.unarchive_address('1NAF7GbdyRg3miHNrw2bGxrd63tfMEmJob')
 ```
 
-####`consolidate`
-Consolidate the wallet addresses. Returns a string array of consolidated addresses.
-
-Params:
-```
-days : int - addresses which have not received any transactions in at least this many days will be consolidated.
-```
-
-Usage:
-```python
-wallet.consolidate(50)
-```
-
-
 ###Response object field definitions
 
 ####`PaymentResponse`

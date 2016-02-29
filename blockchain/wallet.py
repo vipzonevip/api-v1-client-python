@@ -179,22 +179,7 @@ class Wallet:
         json_response = json.loads(response)
         self.parse_error(json_response)
         return json_response['active']
-        
-    def consolidate(self, days):
-        """Consolidate the wallet addresses.
-        
-        :param int days: addresses which have not received any
-                            transactions in at least this many days will be consolidated.
-        :return: a string array of consolidated addresses
-        """
-        
-        params = self.build_basic_request()
-        params['days'] = days
-        response = util.call_api("merchant/{0}/auto_consolidate".format(self.identifier), params)
-        json_response = json.loads(response)
-        self.parse_error(json_response)
-        return json_response['consolidated']
-    
+
     def build_basic_request(self):
         params = {'password': self.password}
         if self.second_password is not None:

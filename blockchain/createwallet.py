@@ -31,12 +31,12 @@ def create_wallet(password, api_code, priv=None, label=None, email=None):
         json_response = json.loads(response)
         return CreateWalletResponse(json_response['guid'],
                                     json_response['address'],
-                                    json_response['link'])
+                                    json_response['label'])
 
 
 class CreateWalletResponse:
     
-    def __init__(self, identifier, address, link):
+    def __init__(self, identifier, address, label):
         self.identifier = identifier
         self.address = address
-        self.link = link
+        self.label = label

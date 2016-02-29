@@ -27,6 +27,6 @@ wallet = createwallet.create_wallet('1234password', '58ck39ajuiw', label = 'Test
 ```
 identifier : str
 address : str
-link : str
+label : str
 ```
 

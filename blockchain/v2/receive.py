@@ -3,7 +3,6 @@ at https://blockchain.info/api/api_receive
 """
 
 from .. import util
-from urllib import urlencode
 import json
 
 
@@ -34,7 +33,7 @@ def receive(xpub, callback, api_key):
     """
 
     params = {'xpub': xpub, 'key': api_key, 'callback': callback}
-    resource = 'v2/receive?' + urlencode(params)
+    resource = 'v2/receive?' + util.urlencode(params)
     resp = util.call_api(resource, base_url='https://api.blockchain.info/')
     json_resp = json.loads(resp)
     payment_response = ReceiveResponse(json_resp['address'],
@@ -45,7 +44,7 @@ def receive(xpub, callback, api_key):
 
 def callback_log(callback, api_key):
     params = {'key': api_key, 'callback': callback}
-    resource = 'v2/receive/callback_log?' + urlencode(params)
+    resource = 'v2/receive/callback_log?' + util.urlencode(params)
     resp = util.call_api(resource, base_url='https://api.blockchain.info/')
     json_resp = json.loads(resp)
     return [LogEntry(e['callback'], e['called_at'], e['raw_response'], e['response_code']) for e in json_resp]

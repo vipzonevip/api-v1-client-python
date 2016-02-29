@@ -203,7 +203,8 @@ class Wallet:
             params['api_code'] = self.api_code
         return params
         
-    def parse_error(self, json_response):
+    @staticmethod
+    def parse_error(json_response):
         error = json_response.get('error')
         if error is not None:
             raise APIException(error, 0)

@@ -6,7 +6,8 @@ at https://blockchain.info/api/create_wallet
 from . import util
 import json
 
-def create_wallet(password, api_code, priv = None, label = None, email = None):
+
+def create_wallet(password, api_code, priv=None, label=None, email=None):
         """Create a new Blockchain.info wallet. It can be created containing a 
         pre-generated private key or will otherwise generate a new private key. 
 
@@ -18,7 +19,7 @@ def create_wallet(password, api_code, priv = None, label = None, email = None):
         :return: an instance of :class:`WalletResponse` class
         """
         
-        params = { 'password': password, 'api_code': api_code }
+        params = {'password': password, 'api_code': api_code}
         if priv is not None:
             params['priv'] = priv
         if label is not None:
@@ -31,7 +32,8 @@ def create_wallet(password, api_code, priv = None, label = None, email = None):
         return CreateWalletResponse(json_response['guid'],
                                     json_response['address'],
                                     json_response['link'])
-            
+
+
 class CreateWalletResponse:
     
     def __init__(self, identifier, address, link):

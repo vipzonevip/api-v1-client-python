@@ -6,7 +6,8 @@ at https://blockchain.info/api/blockchain_api
 from . import util
 import json
 
-def get_block(block_id, api_code = None):
+
+def get_block(block_id, api_code=None):
     """Get a single block based on a block index or hash.
     
     :param str block_id: block hash or index to look up
@@ -21,7 +22,8 @@ def get_block(block_id, api_code = None):
     json_response = json.loads(response)
     return Block(json_response)
 
-def get_tx(tx_id, api_code = None):
+
+def get_tx(tx_id, api_code=None):
     """Get a single transaction based on a transaction index or hash.
     
     :param str block_id: transaction hash or index to look up
@@ -36,7 +38,8 @@ def get_tx(tx_id, api_code = None):
     json_response = json.loads(response)
     return Transaction(json_response)
 
-def get_block_height(height, api_code = None):
+
+def get_block_height(height, api_code=None):
     """Get an array of blocks at the specified height.
     
     :param int height: block height to look up
@@ -51,7 +54,8 @@ def get_block_height(height, api_code = None):
     json_response = json.loads(response)
     return [Block(b) for b in json_response['blocks']]
 
-def get_address(address, api_code = None):
+
+def get_address(address, api_code=None):
     """Get data for a single address.
     
     :param str address: address to look up
@@ -65,8 +69,9 @@ def get_address(address, api_code = None):
     response = util.call_api(resource)
     json_response = json.loads(response)
     return Address(json_response)
-    
-def get_unspent_outputs(address, api_code = None):
+
+
+def get_unspent_outputs(address, api_code=None):
     """Get unspent outputs for a single address.
     
     :param str address: address to look up
@@ -81,7 +86,8 @@ def get_unspent_outputs(address, api_code = None):
     json_response = json.loads(response)
     return [UnspentOutput(o) for o in json_response['unspent_outputs']]
 
-def get_latest_block(api_code = None):
+
+def get_latest_block(api_code=None):
     """Get the latest block on the main chain.
     
     :param str api_code: Blockchain.info API code (optional)
@@ -94,8 +100,9 @@ def get_latest_block(api_code = None):
     response = util.call_api(resource)
     json_response = json.loads(response)
     return LatestBlock(json_response)
-    
-def get_unconfirmed_tx(api_code = None):
+
+
+def get_unconfirmed_tx(api_code=None):
     """Get a list of currently unconfirmed transactions.
     
     :param str api_code: Blockchain.info API code (optional)
@@ -109,7 +116,8 @@ def get_unconfirmed_tx(api_code = None):
     json_response = json.loads(response)
     return [Transaction(t) for t in json_response['txs']]
 
-def get_blocks(time = None, pool_name = None, api_code = None):
+
+def get_blocks(time=None, pool_name=None, api_code=None):
     """Get a list of blocks for a specific day or mining pool.
     Both parameters are optional but at least one is required.
     
@@ -133,7 +141,8 @@ def get_blocks(time = None, pool_name = None, api_code = None):
     json_response = json.loads(response)
     return [SimpleBlock(b) for b in json_response['blocks']]
 
-def get_inventory_data(hash, api_code = None):
+
+def get_inventory_data(hash, api_code=None):
     """Get inventory data.
     
     :param str hash: tx or block hash
@@ -146,14 +155,16 @@ def get_inventory_data(hash, api_code = None):
     response = util.call_api(resource)
     json_response = json.loads(response)
     return InventoryData(json_response)
-                    
+
+
 class SimpleBlock:
     def __init__(self, b):
         self.height = b['height']
         self.hash = b['hash']
         self.time = b['time']
         self.main_chain = b['main_chain']
-        
+
+
 class LatestBlock:
     def __init__(self, b):
         self.hash = b['hash']
@@ -161,7 +172,8 @@ class LatestBlock:
         self.block_index = b['block_index']
         self.height = b['height']
         self.tx_indexes = [i for i in b['txIndexes']]
-            
+
+
 class UnspentOutput:
     def __init__(self, o):
         self.tx_hash = o['tx_hash']
@@ -171,7 +183,8 @@ class UnspentOutput:
         self.value = o['value']
         self.value_hex = o['value_hex']
         self.confirmations = o['confirmations']
-                    
+
+
 class Address:
     def __init__(self, a):
         self.hash160 = a['hash160']
@@ -181,12 +194,13 @@ class Address:
         self.total_sent = a['total_sent']
         self.final_balance = a['final_balance']
         self.transactions = [Transaction(tx) for tx in a['txs']]
-                    
+
+
 class Input:
     def __init__(self, i):
         obj = i.get('prev_out')
         if obj is not None:
-        # regular TX
+            # regular TX
             self.n = obj['n']
             self.value = obj['value']
             self.address = obj['addr']
@@ -196,9 +210,10 @@ class Input:
             self.script_sig = i['script']
             self.sequence = i['sequence']
         else:
-        # coinbase TX
+            # coinbase TX
             self.script_sig = i['script']
             self.sequence = i['sequence']
+
 
 class Output:
     def __init__(self, o):
@@ -208,6 +223,7 @@ class Output:
         self.tx_index = o['tx_index']
         self.script = o['script']
         self.spent = o['spent']
+
 
 class Transaction:
     def __init__(self, t):
@@ -224,7 +240,8 @@ class Transaction:
         
         if self.block_height is None:
             self.block_height = -1
-    
+
+
 class Block:
     def __init__(self, b):
         self.hash = b['hash']
@@ -245,6 +262,7 @@ class Block:
         self.transactions = [Transaction(t) for t in b['tx']]
         for tx in self.transactions:
             tx.block_height = self.height
+
 
 class InventoryData:
     def __init__(self, i):

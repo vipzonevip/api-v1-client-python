@@ -6,7 +6,8 @@ at https://blockchain.info/api/blockchain_wallet_api
 import json
 from . import util
 from .exceptions import *
- 
+
+
 class Wallet:
     """The :class:`Wallet` class mirrors operations listed on the wallet API page.
     It needs to be initialized on a per-wallet basis and will cache the wallet
@@ -14,7 +15,7 @@ class Wallet:
     
     """
     
-    def __init__(self, identifier, password, second_password = None, api_code = None):
+    def __init__(self, identifier, password, second_password=None, api_code=None):
         """Initializes a wallet object.
         
         :param str identifier: wallet identifier (GUID)
@@ -28,7 +29,7 @@ class Wallet:
         self.second_password = second_password
         self.api_code = api_code
     
-    def send(self, to, amount, from_address = None, fee = None, note = None):
+    def send(self, to, amount, from_address=None, fee=None, note=None):
         """Send bitcoin from your wallet to a single address.
 
         :param str to: recipient bitcoin address
@@ -40,10 +41,10 @@ class Wallet:
         :return: an instance of :class:`PaymentResponse` class
         """
         
-        recipient = { to: amount }
+        recipient = {to: amount}
         return self.send_many(recipient, from_address, fee, note)
 
-    def send_many(self, recipients, from_address = None, fee = None, note = None):
+    def send_many(self, recipients, from_address=None, fee=None, note=None):
         """Send bitcoin from your wallet to multiple addresses.
 
         :param dictionary recipients: dictionary with the structure of 'address':amount
@@ -55,8 +56,7 @@ class Wallet:
         """
         
         params = self.build_basic_request()
-        method = ''
-        
+
         if len(recipients) == 1:
             to_address, amount = recipients.popitem()
             params['to'] = to_address
@@ -77,10 +77,9 @@ class Wallet:
         json_response = json.loads(response)
         
         self.parse_error(json_response)
-        payment_response = PaymentResponse(
-                                            json_response['message'],
-                                            json_response['tx_hash'],
-                                            json_response.get('notice'))
+        payment_response = PaymentResponse(json_response['message'],
+                                           json_response['tx_hash'],
+                                           json_response.get('notice'))
         return payment_response
         
     def get_balance(self):
@@ -95,7 +94,7 @@ class Wallet:
         self.parse_error(json_response)
         return json_response.get('balance')
     
-    def list_addresses(self, confirmations = 0):
+    def list_addresses(self, confirmations=0):
         """List all active addresses in the wallet.
         
         :param int confirmations: minimum number of confirmations transactions 
@@ -117,7 +116,7 @@ class Wallet:
             
         return addresses
         
-    def get_address(self, address, confirmations = 0):
+    def get_address(self, address, confirmations=0):
         """Retrieve an address from the wallet.
         
         :param str address: address in the wallet to look up
@@ -134,11 +133,11 @@ class Wallet:
         json_response = json.loads(response)
         self.parse_error(json_response)
         return Address(json_response['balance'],
-                        json_response['address'],
-                        None,
-                        json_response['total_received'])
+                       json_response['address'],
+                       None,
+                       json_response['total_received'])
     
-    def new_address(self, label = None):
+    def new_address(self, label=None):
         """Generate a new address and add it to the wallet.
         
         :param str label:  label to attach to this address (optional)
@@ -151,10 +150,7 @@ class Wallet:
         response = util.call_api("merchant/{0}/new_address".format(self.identifier), params)
         json_response = json.loads(response)
         self.parse_error(json_response)
-        return Address(0,
-                        json_response['address'],
-                        json_response['label'],
-                        0)
+        return Address(0, json_response['address'], json_response['label'], 0)
                         
     def archive_address(self, address):
         """Archive an address.
@@ -200,7 +196,7 @@ class Wallet:
         return json_response['consolidated']
     
     def build_basic_request(self):
-        params = { 'password': self.password }
+        params = {'password': self.password}
         if self.second_password is not None:
             params['second_password'] = self.second_password
         if self.api_code is not None:
@@ -211,14 +207,16 @@ class Wallet:
         error = json_response.get('error')
         if error is not None:
             raise APIException(error, 0)
-            
+
+
 class PaymentResponse:
 
     def __init__(self, message, tx_hash, notice):
         self.message = message
         self.tx_hash = tx_hash
         self.notice = notice
-        
+
+
 class Address:
 
     def __init__(self, balance, address, label, total_received):

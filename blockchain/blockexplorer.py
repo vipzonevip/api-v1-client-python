@@ -26,7 +26,7 @@ def get_block(block_id, api_code=None):
 def get_tx(tx_id, api_code=None):
     """Get a single transaction based on a transaction index or hash.
     
-    :param str block_id: transaction hash or index to look up
+    :param str tx_id: transaction hash or index to look up
     :param str api_code: Blockchain.info API code (optional)
     :return: an instance of :class:`Transaction` class
     """

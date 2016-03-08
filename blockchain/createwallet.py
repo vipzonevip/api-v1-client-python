@@ -27,7 +27,7 @@ def create_wallet(password, api_code, priv=None, label=None, email=None):
         if email is not None:
             params['email'] = email
         
-        response = util.call_api("api/v2/create_wallet", params)
+        response = util.call_api("api/v2/create_wallet", params, base_url=util.SERVICE_URL)
         json_response = json.loads(response)
         return CreateWalletResponse(json_response['guid'],
                                     json_response['address'],

@@ -73,7 +73,8 @@ class Wallet:
         if note is not None:
             params['note'] = note
             
-        response = util.call_api("merchant/{0}/{1}".format(self.identifier, method), params)
+        response = util.call_api("merchant/{0}/{1}".format(self.identifier, method), params,
+                                 base_url=util.SERVICE_URL)
         json_response = json.loads(response)
         
         self.parse_error(json_response)
@@ -89,7 +90,8 @@ class Wallet:
         :return: wallet balance in satoshi
         """
         
-        response = util.call_api("merchant/{0}/balance".format(self.identifier), self.build_basic_request())
+        response = util.call_api("merchant/{0}/balance".format(self.identifier), self.build_basic_request(),
+                                 base_url=util.SERVICE_URL)
         json_response = json.loads(response)
         self.parse_error(json_response)
         return json_response.get('balance')
@@ -105,7 +107,8 @@ class Wallet:
         
         params = self.build_basic_request()
         params['confirmations'] = confirmations
-        response = util.call_api("merchant/{0}/list".format(self.identifier), params)
+        response = util.call_api("merchant/{0}/list".format(self.identifier), params, base_url=util.SERVICE_URL)
+
         json_response = json.loads(response)
         self.parse_error(json_response)
         
@@ -129,7 +132,9 @@ class Wallet:
         params = self.build_basic_request()
         params['address'] = address
         params['confirmations'] = confirmations
-        response = util.call_api("merchant/{0}/address_balance".format(self.identifier), params)
+
+        response = util.call_api("merchant/{0}/address_balance".format(self.identifier), params,
+                                 base_url=util.SERVICE_URL)
         json_response = json.loads(response)
         self.parse_error(json_response)
         return Address(json_response['balance'],
@@ -147,7 +152,7 @@ class Wallet:
         params = self.build_basic_request()
         if label is not None:
             params['label'] = label
-        response = util.call_api("merchant/{0}/new_address".format(self.identifier), params)
+        response = util.call_api("merchant/{0}/new_address".format(self.identifier), params, base_url=util.SERVICE_URL)
         json_response = json.loads(response)
         self.parse_error(json_response)
         return Address(0, json_response['address'], json_response['label'], 0)
@@ -161,7 +166,8 @@ class Wallet:
         
         params = self.build_basic_request()
         params['address'] = address
-        response = util.call_api("merchant/{0}/archive_address".format(self.identifier), params)
+        response = util.call_api("merchant/{0}/archive_address".format(self.identifier), params,
+                                 base_url=util.SERVICE_URL)
         json_response = json.loads(response)
         self.parse_error(json_response)
         return json_response['archived']
@@ -175,7 +181,8 @@ class Wallet:
         
         params = self.build_basic_request()
         params['address'] = address
-        response = util.call_api("merchant/{0}/unarchive_address".format(self.identifier), params)
+        response = util.call_api("merchant/{0}/unarchive_address".format(self.identifier), params,
+                                 base_url=util.SERVICE_URL)
         json_response = json.loads(response)
         self.parse_error(json_response)
         return json_response['active']

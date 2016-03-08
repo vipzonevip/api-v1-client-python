@@ -2,6 +2,7 @@ from .exceptions import *
 import sys
 
 BASE_URL = "https://blockchain.info/"
+SERVICE_URL = "http://localhost"
 TIMEOUT = 10
 
 py_version = sys.version_info[0]

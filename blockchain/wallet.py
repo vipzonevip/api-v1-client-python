@@ -15,17 +15,19 @@ class Wallet:
     
     """
     
-    def __init__(self, identifier, password, second_password=None, api_code=None):
+    def __init__(self, identifier, password, service_url, second_password=None, api_code=None):
         """Initializes a wallet object.
         
         :param str identifier: wallet identifier (GUID)
         :param str password : decryption password
+        :param str service_url : URL to an instance of service-my-wallet-v3 (with trailing slash)
         :param str second_password: second password (optional)
         :param str api_code: Blockchain.info API code
         """
         
         self.identifier = identifier
         self.password = password
+        self.service_url = service_url
         self.second_password = second_password
         self.api_code = api_code
     
@@ -74,7 +76,7 @@ class Wallet:
             params['note'] = note
             
         response = util.call_api("merchant/{0}/{1}".format(self.identifier, method), params,
-                                 base_url=util.SERVICE_URL)
+                                 base_url=self.service_url)
         json_response = json.loads(response)
         
         self.parse_error(json_response)
@@ -91,7 +93,7 @@ class Wallet:
         """
         
         response = util.call_api("merchant/{0}/balance".format(self.identifier), self.build_basic_request(),
-                                 base_url=util.SERVICE_URL)
+                                 base_url=self.service_url)
         json_response = json.loads(response)
         self.parse_error(json_response)
         return json_response.get('balance')
@@ -107,7 +109,7 @@ class Wallet:
         
         params = self.build_basic_request()
         params['confirmations'] = confirmations
-        response = util.call_api("merchant/{0}/list".format(self.identifier), params, base_url=util.SERVICE_URL)
+        response = util.call_api("merchant/{0}/list".format(self.identifier), params, base_url=self.service_url)
 
         json_response = json.loads(response)
         self.parse_error(json_response)
@@ -134,7 +136,7 @@ class Wallet:
         params['confirmations'] = confirmations
 
         response = util.call_api("merchant/{0}/address_balance".format(self.identifier), params,
-                                 base_url=util.SERVICE_URL)
+                                 base_url=self.service_url)
         json_response = json.loads(response)
         self.parse_error(json_response)
         return Address(json_response['balance'],
@@ -152,7 +154,7 @@ class Wallet:
         params = self.build_basic_request()
         if label is not None:
             params['label'] = label
-        response = util.call_api("merchant/{0}/new_address".format(self.identifier), params, base_url=util.SERVICE_URL)
+        response = util.call_api("merchant/{0}/new_address".format(self.identifier), params, base_url=self.service_url)
         json_response = json.loads(response)
         self.parse_error(json_response)
         return Address(0, json_response['address'], json_response['label'], 0)
@@ -167,7 +169,7 @@ class Wallet:
         params = self.build_basic_request()
         params['address'] = address
         response = util.call_api("merchant/{0}/archive_address".format(self.identifier), params,
-                                 base_url=util.SERVICE_URL)
+                                 base_url=self.service_url)
         json_response = json.loads(response)
         self.parse_error(json_response)
         return json_response['archived']
@@ -182,7 +184,7 @@ class Wallet:
         params = self.build_basic_request()
         params['address'] = address
         response = util.call_api("merchant/{0}/unarchive_address".format(self.identifier), params,
-                                 base_url=util.SERVICE_URL)
+                                 base_url=self.service_url)
         json_response = json.loads(response)
         self.parse_error(json_response)
         return json_response['active']

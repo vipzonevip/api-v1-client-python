@@ -29,6 +29,8 @@ The module consists of the following sub-modules:
 
 The main module is called `blockchain`
 
+In order to use `createwallet` and `wallet` you need to run an instance of [service-my-wallet-v3](https://github.com/blockchain/service-my-wallet-v3).
+
 ###Error handling
 
 All functions may raise exceptions caused by incorrectly passed parameters or other problems. If a call is rejected server-side, the `APIException` exception will be raised.

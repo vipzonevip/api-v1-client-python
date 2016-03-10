@@ -6,6 +6,7 @@ Constructor params:
 ```
 identifier : str
 password : str
+service_url : str - URL to an instance of service-my-wallet-v3 (with trailing slash)
 second_password : str (optional)
 api_code : str (optional)
 ```

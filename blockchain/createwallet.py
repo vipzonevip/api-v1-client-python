@@ -7,12 +7,13 @@ from . import util
 import json
 
 
-def create_wallet(password, api_code, priv=None, label=None, email=None):
+def create_wallet(password, api_code, service_url, priv=None, label=None, email=None):
         """Create a new Blockchain.info wallet. It can be created containing a 
         pre-generated private key or will otherwise generate a new private key. 
 
         :param str password: password for the new wallet. At least 10 characters.
         :param str api_code: API code with create wallets permission
+        :param str service_url: URL to an instance of service-my-wallet-v3 (with trailing slash)
         :param str priv: private key to add to the wallet (optional)
         :param str label: label for the first address in the wallet (optional)
         :param str email: email to associate with the new wallet (optional)
@@ -27,7 +28,7 @@ def create_wallet(password, api_code, priv=None, label=None, email=None):
         if email is not None:
             params['email'] = email
         
-        response = util.call_api("api/v2/create_wallet", params, base_url=util.SERVICE_URL)
+        response = util.call_api("api/v2/create_wallet", params, base_url=service_url)
         json_response = json.loads(response)
         return CreateWalletResponse(json_response['guid'],
                                     json_response['address'],

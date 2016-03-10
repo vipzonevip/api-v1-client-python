@@ -3,8 +3,8 @@ at https://blockchain.info/api/api_receive
 """
 
 from .. import util
-from urllib import urlencode
 import json
+
 
 class ReceiveResponse:
 
@@ -13,6 +13,7 @@ class ReceiveResponse:
         self.index = index
         self.callback_url = callback
 
+
 class LogEntry:
 
     def __init__(self, callback_url, called_at, raw_response, response_code):
@@ -20,6 +21,7 @@ class LogEntry:
         self.called_at = called_at
         self.raw_response = raw_response
         self.response_code = response_code
+
 
 def receive(xpub, callback, api_key):
     """Call the 'api/receive' endpoint and create a forwarding address.
@@ -30,18 +32,19 @@ def receive(xpub, callback, api_key):
     :return: an instance of :class:`ReceiveResponse` class
     """
 
-    params = {'xpub': xpub, 'key': api_key, 'callback': callback }
-    resource = 'v2/receive?' + urlencode(params)
-    resp = util.call_api(resource, base_url = 'https://api.blockchain.info/')
+    params = {'xpub': xpub, 'key': api_key, 'callback': callback}
+    resource = 'v2/receive?' + util.urlencode(params)
+    resp = util.call_api(resource, base_url='https://api.blockchain.info/')
     json_resp = json.loads(resp)
     payment_response = ReceiveResponse(json_resp['address'],
-                                        json_resp['index'],
-                                        json_resp['callback'])
+                                       json_resp['index'],
+                                       json_resp['callback'])
     return payment_response
 
+
 def callback_log(callback, api_key):
-    params = {'key': api_key, 'callback': callback }
-    resource = 'v2/receive/callback_log?' + urlencode(params)
-    resp = util.call_api(resource, base_url = 'https://api.blockchain.info/')
+    params = {'key': api_key, 'callback': callback}
+    resource = 'v2/receive/callback_log?' + util.urlencode(params)
+    resp = util.call_api(resource, base_url='https://api.blockchain.info/')
     json_resp = json.loads(resp)
-    return [ LogEntry(e['callback'], e['called_at'], e['raw_response'], e['response_code']) for e in json_resp]
+    return [LogEntry(e['callback'], e['called_at'], e['raw_response'], e['response_code']) for e in json_resp]

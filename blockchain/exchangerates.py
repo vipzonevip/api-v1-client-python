@@ -5,7 +5,8 @@ https://blockchain.info/api/exchange_rates_api
 import json
 from . import util
 
-def get_ticker(api_code = None):
+
+def get_ticker(api_code=None):
     """Call the 'ticker' method and return a dictionary
     of :class:`Currency` objects.
     
@@ -19,14 +20,15 @@ def get_ticker(api_code = None):
     for key in json_response:
         json_ccy = json_response[key]
         ccy = Currency(json_ccy['last'],
-                        json_ccy['buy'],
-                        json_ccy['sell'],
-                        json_ccy['symbol'],
-                        json_ccy['15m'])
+                       json_ccy['buy'],
+                       json_ccy['sell'],
+                       json_ccy['symbol'],
+                       json_ccy['15m'])
         ticker[key] = ccy
     return ticker
 
-def to_btc(ccy, value, api_code = None):
+
+def to_btc(ccy, value, api_code=None):
     """Call the 'tobtc' method and convert x value in the provided currency to BTC.
     
     :param str ccy: currency code
@@ -39,7 +41,8 @@ def to_btc(ccy, value, api_code = None):
     if api_code is not None:
         res += '&api_code=' + api_code
     return float(util.call_api(res))
-    
+
+
 class Currency:
     def __init__(self, last, buy, sell, symbol, p15min):
         self.last = last

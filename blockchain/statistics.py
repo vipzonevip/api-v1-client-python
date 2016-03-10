@@ -6,7 +6,8 @@ at https://blockchain.info/api/charts_api
 from . import util
 import json
 
-def get(api_code = None):
+
+def get(api_code=None):
     """Get network statistics.
     
     :param str api_code: Blockchain.info API code (optional)
@@ -19,7 +20,8 @@ def get(api_code = None):
     response = util.call_api(resource)
     json_response = json.loads(response)
     return Stats(json_response)
-    
+
+
 class Stats:
     def __init__(self, s):
         self.trade_volume_btc = s['trade_volume_btc']

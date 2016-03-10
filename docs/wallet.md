@@ -6,6 +6,7 @@ Constructor params:
 ```
 identifier : str
 password : str
+service_url : str - URL to an instance of service-my-wallet-v3 (with trailing slash)
 second_password : str (optional)
 api_code : str (optional)
 ```
@@ -14,7 +15,7 @@ Usage:
 ```python
 from blockchain.wallet import Wallet
 
-wallet = Wallet('ada4e4b6-3c9f-11e4-baad-164230d1df67', 'password123')
+wallet = Wallet('ada4e4b6-3c9f-11e4-baad-164230d1df67', 'password123', 'http://localhost:3000')
 ```
 
 ####`send`
@@ -132,20 +133,6 @@ Usage:
 ```python
 wallet.unarchive_address('1NAF7GbdyRg3miHNrw2bGxrd63tfMEmJob')
 ```
-
-####`consolidate`
-Consolidate the wallet addresses. Returns a string array of consolidated addresses.
-
-Params:
-```
-days : int - addresses which have not received any transactions in at least this many days will be consolidated.
-```
-
-Usage:
-```python
-wallet.consolidate(50)
-```
-
 
 ###Response object field definitions
 

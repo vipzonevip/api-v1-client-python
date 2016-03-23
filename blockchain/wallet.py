@@ -157,7 +157,7 @@ class Wallet:
         response = util.call_api("merchant/{0}/new_address".format(self.identifier), params, base_url=self.service_url)
         json_response = json.loads(response)
         self.parse_error(json_response)
-        return Address(0, json_response['address'], json_response['label'], 0)
+        return Address(0, json_response['address'], json_response.get('label'), 0)
                         
     def archive_address(self, address):
         """Archive an address.

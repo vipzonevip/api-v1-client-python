@@ -125,7 +125,7 @@ time : int
 bits : int
 fee : int
 nonce int
-t_tx : int
+n_tx : int
 size : int
 block_index : int
 main_chain : bool

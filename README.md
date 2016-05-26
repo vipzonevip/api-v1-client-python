@@ -23,7 +23,7 @@ The module consists of the following sub-modules:
 * `createwallet` ([docs](docs/createwallet.md)) ([api/create_wallet][api2])
 * `exchangerates` ([docs](docs/exchangerates.md)) ([api/exchange\_rates\_api][api3])
 * `pushtx` ([docs](docs/pushtx.md)) ([pushtx][api7])
-* `receive` ([docs](docs/receive.md)) ([api/api_receive][api4])
+* `v2.receive` ([docs](docs/receive.md)) ([api/api_receive][api4])
 * `statistics` ([docs](docs/statistics.md)) ([api/charts_api][api5])
 * `wallet` ([docs](docs/wallet.md)) ([api/blockchain\_wallet\_api][api6])
 

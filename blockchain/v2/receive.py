@@ -24,7 +24,7 @@ class LogEntry:
 
 
 def receive(xpub, callback, api_key):
-    """Call the 'api/receive' endpoint and create a forwarding address.
+    """Call the '/v2/receive' endpoint and create a forwarding address.
     
     :param str xpub: extended public key to generate payment address
     :param str callback: callback URI that will be called upon payment
@@ -43,6 +43,12 @@ def receive(xpub, callback, api_key):
 
 
 def callback_log(callback, api_key):
+    """Call the 'v2/receive/callback_log' endpoint and returns the callback log
+    for a given callback URI with parameters.
+    :param callback: callback URI
+    :param api_key: Blockchain.info API V2 key
+    :return: a list of :class:`LogEntry` objects
+    """
     params = {'key': api_key, 'callback': callback}
     resource = 'v2/receive/callback_log?' + util.urlencode(params)
     resp = util.call_api(resource, base_url='https://api.blockchain.info/')

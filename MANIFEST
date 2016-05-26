@@ -6,7 +6,6 @@ blockchain/createwallet.py
 blockchain/exceptions.py
 blockchain/exchangerates.py
 blockchain/pushtx.py
-blockchain/receive.py
 blockchain/statistics.py
 blockchain/util.py
 blockchain/wallet.py

@@ -116,7 +116,7 @@ class Wallet:
         
         addresses = []
         for a in json_response['addresses']:
-            address = Address(a['balance'], a['address'], a['label'], a['total_received'])
+            address = Address(a['balance'], a['address'], a.get('label'), a['total_received'])
             addresses.append(address)
             
         return addresses

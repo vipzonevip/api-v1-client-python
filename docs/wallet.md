@@ -1,4 +1,4 @@
-##`wallet` module
+## `wallet` module
 
 An instance of the `Wallet` class needs to be initialized before it can be used.
 
@@ -18,7 +18,7 @@ from blockchain.wallet import Wallet
 wallet = Wallet('ada4e4b6-3c9f-11e4-baad-164230d1df67', 'password123', 'http://localhost:3000')
 ```
 
-####`send`
+#### `send`
 Send bitcoin from your wallet to a single address. Returns a `PaymentResponse` object.
 
 Params:
@@ -37,7 +37,7 @@ payment = wallet.send('1NAF7GbdyRg3miHNrw2bGxrd63tfMEmJob', 1000000, from_addres
 print payment.tx_hash
 ```
 
-####`send_many`
+#### `send_many`
 Send bitcoin from your wallet to multiple addresses. Returns a `PaymentResponse` object.
 
 Params:
@@ -57,7 +57,7 @@ payment = wallet.send_many(recipients)
 print payment.tx_hash
 ```
 
-####`get_balance`
+#### `get_balance`
 Fetch the wallet balance. Includes unconfirmed transactions and possibly double spends. Returns the wallet balance in satoshi.
 
 Usage:
@@ -65,7 +65,7 @@ Usage:
 print wallet.get_balance() 
 ```
 
-####`list_addresses`
+#### `list_addresses`
 List all active addresses in the wallet. Returns an array of `Address` objects.
 
 Params:
@@ -81,7 +81,7 @@ for a in addresses:
 
 ```
 
-####`get_address`
+#### `get_address`
 Retrieve an address from the wallet. Returns an `Address` object.
 
 Params:
@@ -95,7 +95,7 @@ addr = wallet.get_address('1NAF7GbdyRg3miHNrw2bGxrd63tfMEmJob', confirmations = 
 print addr.balance
 ```
 
-####`new_address`
+#### `new_address`
 Generate a new address and add it to the wallet. Returns an `Address` object.
 
 Params:
@@ -108,7 +108,7 @@ Usage:
 newaddr = wallet.new_address('test_label')
 ```
 
-####`archive_address`
+#### `archive_address`
 Archive an address. Returns a string representation of the archived address.
 
 Params:
@@ -121,7 +121,7 @@ Usage:
 wallet.archive_address('1NAF7GbdyRg3miHNrw2bGxrd63tfMEmJob')
 ```
 
-####`unarchive_address`
+#### `unarchive_address`
 Unarchive an address. Returns a string representation of the unarchived address.
 
 Params:
@@ -134,9 +134,9 @@ Usage:
 wallet.unarchive_address('1NAF7GbdyRg3miHNrw2bGxrd63tfMEmJob')
 ```
 
-###Response object field definitions
+### Response object field definitions
 
-####`PaymentResponse`
+#### `PaymentResponse`
 
 ```
 message : str
@@ -144,7 +144,7 @@ tx_hash : str
 notice : str
 ```
 
-####`Address`
+#### `Address`
 
 ```
 balance : long

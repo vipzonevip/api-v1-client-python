@@ -1,6 +1,6 @@
-##`statistics` module
+## `statistics` module
 
-####`get`
+#### `get`
 Get network statistics. Returns a `Stats` object.
 
 Params:
@@ -16,9 +16,9 @@ stats = statistics.get()
 ```
 
 
-###Response object field definitions
+### Response object field definitions
 
-####`Stats`
+#### `Stats`
 
 ```
 trade_volume_btc : float

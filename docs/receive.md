@@ -1,6 +1,6 @@
-##`v2.receive` module
+## `v2.receive` module
 
-####`receive`
+#### `receive`
 Call the 'api.blockchain.info/v2/receive' endpoint and create a forwarding address. Returns a `ReceiveResponse` object.
 
 Params:
@@ -19,9 +19,9 @@ resp = receive.receive('1hNapz1CuH4DhnV1DFHH7hafwDE8FJRheA', 'http://your.url.co
 ```
 
 
-###Response object field definitions
+### Response object field definitions
 
-####`ReceiveResponse`
+#### `ReceiveResponse`
 
 ```
 address : str
@@ -29,7 +29,7 @@ index : int
 callback_url : str
 ```
 
-####`callback_log`
+#### `callback_log`
 Call the 'api.blockchain.info/v2/receive/callback_log' endpoint and returns the list of callbacks performed for a given 
 callback URI. 
 Returns a list of `LogEntry` objects.
@@ -48,9 +48,9 @@ logs = receive.callback_log('http://your.url.com?invoice_id=1234465', 'your api 
 
 ```
 
-###Log entry object field definitions
+### Log entry object field definitions
 
-####`LogEntry`
+#### `LogEntry`
 
 ```
 callback_url : str

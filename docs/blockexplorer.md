@@ -1,7 +1,7 @@
-##`blockexplorer` module
+## `blockexplorer` module
 All functions support an optional parameter called `api_code`. It won't be listed with every function description.
 
-####`get_block`
+#### `get_block`
 Get a single block based on a block hash. Returns a `Block` object.
 
 Params: 
@@ -16,7 +16,7 @@ from blockchain import blockexplorer
 block = blockexplorer.get_block('000000000000000016f9a2c3e0f4c1245ff24856a79c34806969f5084f410680')
 ```
 
-####`get_tx`
+#### `get_tx`
 Get a single transaction based on a transaction hash. Returns a `Transaction` object.
 
 Params:
@@ -29,7 +29,7 @@ Usage:
 tx = blockexplorer.get_tx('d4af240386cdacab4ca666d178afc88280b620ae308ae8d2585e9ab8fc664a94')
 ```
 
-####`get_block_height`
+#### `get_block_height`
 Get an array of blocks at the specified height. Returns an array of `Block` objects.
 
 Params:
@@ -42,7 +42,7 @@ Usage:
 blocks = blockexplorer.get_block_height(2570)
 ```
 
-####`get_address`
+#### `get_address`
 Get a single address and its transactions. Returns an `Address` object.
 
 Params:
@@ -57,7 +57,7 @@ Usage:
 address = blockexplorer.get_address('1HS9RLmKvJ7D1ZYgfPExJZQZA1DMU3DEVd')
 ```
 
-####`get_xpub`
+#### `get_xpub`
 Get a single xpub and its transactions. Returns an `Xpub` object.
 
 Params:
@@ -73,7 +73,7 @@ xpub = blockexplorer.get_xpub('xpub6CmZamQcHw2TPtbGmJNEvRgfhLwitarvzFn3fBYEEkFTq
 ```
 
 
-####`get_multi_address`
+#### `get_multi_address`
 Get aggregate summary for multiple addresses including overall balance, per address balance
 and list of relevant transactions. Returns an `MultiAddress` object.
 
@@ -102,7 +102,7 @@ Usage:
 addresses = blockexplorer.get_multi_address('1HS9RLmKvJ7D1ZYgfPExJZQZA1DMU3DEVd', xpub6CmZamQcHw2TPtbGmJNEvRgfhLwitarvzFn3fBYEEkFTqztus7W7CNbf48Kxuj1bRRBmZPzQocB6qar9ay6buVkQk73ftKE1z4tt9cPHWRn)
 ```
 
-####`get_unspent_outputs`
+#### `get_unspent_outputs`
 Get an array of unspent outputs for an address. Returns an array of `UnspentOutput` objects.
 
 Params:
@@ -117,7 +117,7 @@ Usage:
 outs = blockexplorer.get_unspent_outputs('1HS9RLmKvJ7D1ZYgfPExJZQZA1DMU3DEVd')
 ```
 
-####`get_latest_block`
+#### `get_latest_block`
 Get the latest block on the main chain. Returns a `LatestBlock` object.
 
 Usage:
@@ -125,7 +125,7 @@ Usage:
 latest_block = blockexplorer.get_latest_block()
 ```
 
-####`get_unconfirmed_tx`
+#### `get_unconfirmed_tx`
 Get a list of currently unconfirmed transactions. Returns an array of `Transaction` objects.
 
 Usage:
@@ -133,7 +133,7 @@ Usage:
 txs = blockexplorer.get_unconfirmed_tx()
 ```
 
-####`get_blocks`
+#### `get_blocks`
 Get a list of blocks for a specific day or mining pool. Returns an array of `SimpleBlock` objects.
 
 Params:
@@ -148,9 +148,9 @@ Usage:
 blocks = blockexplorer.get_blocks(pool_name = 'Discus Fish')
 ```
 
-###Response object field definitions
+### Response object field definitions
 
-####`Block`
+#### `Block`
 
 ```
 hash : str
@@ -171,7 +171,7 @@ relayed_by : string
 transactions : array of Transaction objects
 ```
 
-####`Transaction`
+#### `Transaction`
 
 ```
 double_spend : bool
@@ -186,7 +186,7 @@ inputs : array of Input objects
 outputs: array of Output objects
 ```
 
-####`Input`
+#### `Input`
 
 ```
 n : int
@@ -201,7 +201,7 @@ sequence : int
 
 Note: if coinbase transaction, then only `script` and `script_siq` will be populated.
 
-####`Output`
+#### `Output`
 
 ```
 n : int
@@ -212,7 +212,7 @@ script : str
 spent : bool
 ```
 
-####`Address`
+#### `Address`
 
 ```
 hash160 : str
@@ -270,7 +270,7 @@ total_received : int
 final_balance : int
 ```
 
-####`UnspentOutput`
+#### `UnspentOutput`
 
 ```
 tx_hash : str
@@ -282,7 +282,7 @@ value_hex : str
 confirmations : int
 ```
 
-####`LatestBlock`
+#### `LatestBlock`
 
 ```
 hash : str
@@ -292,7 +292,7 @@ height : int
 tx_indexes : array of TX indexes (integers)
 ```
 
-####`SimpleBlock`
+#### `SimpleBlock`
 
 ```
 height : int
@@ -300,3 +300,4 @@ hash : str
 time : int
 main_chain : bool
 ```
+

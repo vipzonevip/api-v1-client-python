@@ -1,8 +1,8 @@
-##`exchangerates` module
+## `exchangerates` module
 
 All functions support an optional parameter called `api_code`. It won't be listed with every function description.
 
-####`get_ticker`
+#### `get_ticker`
 Call the 'ticker' method and return a dictionary of `Currency` objects. Keys are currency symbols (str) and values are `Currency` objects.
 
 
@@ -16,7 +16,7 @@ for k in ticker:
 	print k, ticker[k].p15min
 ```
 
-####`to_btc`
+#### `to_btc`
 Call the 'tobtc' method and convert x value in the provided currency to BTC. Returns a `float`.
 
 Params:
@@ -30,9 +30,9 @@ Usage:
 btc_amount = exchangerates.to_btc('USD', 4342.11)
 ```
 
-###Response object field definitions
+### Response object field definitions
 
-####`Currency`
+#### `Currency`
 
 ```
 last : float

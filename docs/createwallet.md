@@ -1,6 +1,6 @@
-##`createwallet` module
+## `createwallet` module
 
-####`create_wallet`
+#### `create_wallet`
 Create a new Blockchain.info wallet. It can be created containing a pre-generated private key or will otherwise generate a new private key. Returns a `CreateWalletResponse` instance.
 
 Params: 
@@ -21,9 +21,9 @@ wallet = createwallet.create_wallet('1234password', '58ck39ajuiw', 'http://local
 ```
 
 
-###Response object field definitions
+### Response object field definitions
 
-####`CreateWalletResponse`
+#### `CreateWalletResponse`
 
 ```
 identifier : str

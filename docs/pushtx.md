@@ -1,6 +1,6 @@
-##`pushtx` module
+## `pushtx` module
 
-####`pushtx`
+#### `pushtx`
 Call the `pushtx` endpoint and broadcast a hex encoded transaction. The method does not return anything upon success, but will raise exceptions if the transaction is malformed.
 
 Params:

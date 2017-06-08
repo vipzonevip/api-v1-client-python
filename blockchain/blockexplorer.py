@@ -10,12 +10,12 @@ from enum import Enum
 
 def get_block(block_id, api_code=None):
     """Get a single block based on a block hash.
-    
+
     :param str block_id: block hash to look up
     :param str api_code: Blockchain.info API code (optional)
     :return: an instance of :class:`Block` class
     """
-    
+
     resource = 'rawblock/' + block_id
     if api_code is not None:
         resource += '?api_code=' + api_code
@@ -26,12 +26,12 @@ def get_block(block_id, api_code=None):
 
 def get_tx(tx_id, api_code=None):
     """Get a single transaction based on a transaction hash.
-    
+
     :param str tx_id: transaction hash to look up
     :param str api_code: Blockchain.info API code (optional)
     :return: an instance of :class:`Transaction` class
     """
-    
+
     resource = 'rawtx/' + tx_id
     if api_code is not None:
         resource += '?api_code=' + api_code
@@ -42,12 +42,12 @@ def get_tx(tx_id, api_code=None):
 
 def get_block_height(height, api_code=None):
     """Get an array of blocks at the specified height.
-    
+
     :param int height: block height to look up
     :param str api_code: Blockchain.info API code (optional)
     :return: an array of :class:`Block` objects
     """
-    
+
     resource = 'block-height/{0}?format=json'.format(height)
     if api_code is not None:
         resource += '&api_code=' + api_code
@@ -58,7 +58,7 @@ def get_block_height(height, api_code=None):
 
 def get_address(address, filter=None, limit=None, offset=None, api_code=None):
     """Get data for a single address including an address balance and list of relevant transactions.
-    
+
     :param str address: address(base58 or hash160) to look up
     :param FilterType filter: the filter for transactions selection (optional)
     :param int limit: limit number of transactions to display (optional)
@@ -66,7 +66,7 @@ def get_address(address, filter=None, limit=None, offset=None, api_code=None):
     :param str api_code: Blockchain.info API code (optional)
     :return: an instance of :class:`Address` class
     """
-    
+
     resource = 'address/{0}?format=json'.format(address)
     if filter is not None:
         if isinstance(filter, FilterType):
@@ -172,7 +172,7 @@ def get_balance(addresses, filter=None, api_code=None):
 
 def get_unspent_outputs(addresses, confirmations=None, limit=None, api_code=None):
     """Get unspent outputs for a single address.
-    
+
     :param tuple addresses: addresses(xpub or base58) to look up
     :param int confirmations: minimum confirmations to include (optional)
     :param int limit: limit number of unspent outputs to fetch (optional)
@@ -197,11 +197,11 @@ def get_unspent_outputs(addresses, confirmations=None, limit=None, api_code=None
 
 def get_latest_block(api_code=None):
     """Get the latest block on the main chain.
-    
+
     :param str api_code: Blockchain.info API code (optional)
     :return: an instance of :class:`LatestBlock` class
     """
-    
+
     resource = 'latestblock'
     if api_code is not None:
         resource += '?api_code=' + api_code
@@ -212,11 +212,11 @@ def get_latest_block(api_code=None):
 
 def get_unconfirmed_tx(api_code=None):
     """Get a list of currently unconfirmed transactions.
-    
+
     :param str api_code: Blockchain.info API code (optional)
     :return: an array of :class:`Transaction` objects
     """
-    
+
     resource = 'unconfirmed-transactions?format=json'
     if api_code is not None:
         resource += '&api_code=' + api_code
@@ -228,13 +228,13 @@ def get_unconfirmed_tx(api_code=None):
 def get_blocks(time=None, pool_name=None, api_code=None):
     """Get a list of blocks for a specific day or mining pool.
     Both parameters are optional but at least one is required.
-    
+
     :param int time: time in milliseconds
     :param str pool_name: name of the mining pool
     :param str api_code: Blockchain.info API code (optional)
     :return: an array of :class:`SimpleBlock` objects
     """
-    
+
     resource = 'blocks/{0}?format=json'
     if api_code is not None:
         resource += '&api_code=' + api_code
@@ -244,7 +244,7 @@ def get_blocks(time=None, pool_name=None, api_code=None):
         resource = resource.format(pool_name)
     else:
         resource = resource.format('')
-        
+
     response = util.call_api(resource)
     json_response = json.loads(response)
     return [SimpleBlock(b) for b in json_response['blocks']]
@@ -333,7 +333,8 @@ class Input:
             # regular TX
             self.n = obj['n']
             self.value = obj['value']
-            self.address = obj['addr']
+            if 'addr' in obj:
+                self.address = obj['addr']
             self.tx_index = obj['tx_index']
             self.type = obj['type']
             self.script = obj['script']
@@ -367,7 +368,7 @@ class Transaction:
         self.size = t['size']
         self.inputs = [Input(i) for i in t['inputs']]
         self.outputs = [Output(o) for o in t['out']]
-        
+
         if self.block_height is None:
             self.block_height = -1
 

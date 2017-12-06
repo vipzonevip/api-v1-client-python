@@ -354,6 +354,14 @@ class Output:
         self.tx_index = o['tx_index']
         self.script = o['script']
         self.spent = o['spent']
+        self.addr_tag_link = None
+        self.addr_tag = None
+
+        if 'addr_tag_link' in o:
+            self.addr_tag_link = o['addr_tag_link']
+           
+        if 'addr_tag' in o:
+            self.addr_tag = o['addr_tag']
 
 
 class Transaction:

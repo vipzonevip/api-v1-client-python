@@ -6,7 +6,7 @@ at https://blockchain.info/api/blockchain_api
 from . import util
 import json
 from enum import Enum
-
+from past.builtins import basestring
 
 def get_block(block_id, api_code=None):
     """Get a single block based on a block hash.

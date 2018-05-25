@@ -11,7 +11,7 @@ setup(name='blockchain',
       license='MIT',
       packages=['blockchain', 'blockchain/v2'],
       keywords='blockchain.info api blockchain',
-      install_requires=['enum34', 'future'],
+      install_requires=['enum-compat', 'future'],
       classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

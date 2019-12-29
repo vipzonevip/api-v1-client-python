@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=yes">
+    <link rel="stylesheet" type="text/css" href="/assets/5437005d/css/main.css?v11" />
+<title>eastwind.biz</title>
+    
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <script src="/assets/2f3ca372/jQuery1.8.2.js"></script>
+
+
+        <script>
+        /*! http://tinynav.viljamis.com v1.2 by @viljamis */
+        (function (a, k, g) {
+            a.fn.tinyNav = function (l) {
+                var c = a.extend({active: "selected", header: "", indent: "- ", label: ""}, l);
+                return this.each(function () {
+                    g++;
+                    var h = a(this), b = "tinynav" + g, f = ".l_" + b, e = a("<select/>").attr("id", b).addClass("tinynav " + b);
+                    if (h.is("ul,ol")) {
+                        "" !== c.header && e.append(a("<option/>").text(c.header));
+                        var d = "";
+                        h.addClass("l_" + b).find("a").each(function () {
+                            d += '<option value="' + a(this).attr("href") + '">';
+                            var b;
+                            for (b = 0; b < a(this).parents("ul, ol").length - 1; b++)d += c.indent;
+                            d += a(this).text() + "</option>"
+                        });
+                        e.append(d);
+                        c.header || e.find(":eq(" + a(f + " li").index(a(f + " li." + c.active)) + ")").attr("selected", !0);
+                        e.change(function () {
+                            k.location.href = a(this).val()
+                        });
+                        a(f).after(e);
+                        c.label && e.before(a("<label/>").attr("for", b).addClass("tinynav_label " + b + "_label").append(c.label))
+                    }
+                })
+            }
+        })(jQuery, this, 0);
+
+        $(document).ready(function () {
+            $(".header-menu-toggle").click(function () {
+                $('.header-menu-container').toggle();
+                return false;
+            });
+        });
+    </script>
+    </head>
+    <div id="userpanel">
+        <div class="tinynav">
+                            <a href="/user/login"><b class="fa fa-sign-in mr5"
+                                                                            aria-hidden="true"></i>Вход</a> | <b
+                    href="/user/registration">Регистрация</a>
+                        </div>
+    </div>
+<body class="home-page5">
+    <script type="text/javascript">
+        (function () {
+            var chat_s = document.createElement('script');
+            chat_s.type = 'text/javascript';
+            chat_s.async = true;
+            chat_s.src = top.location.protocol + '//chat.iklad-chat.biz/code.cgi?c=4526' + (top.location.protocol == 'http:' ? '' : '&ssl=1') + '&rnd=' + Math.random();
+            document.body.appendChild(chat_s);
+        })();
+    </script>
+<div class="main">
+
+
+    <header class="header clearfix">
+        <div class="container">
+            <!--<a href="#" class="header-menu-toggle">меню</a>-->
+            <div class="logo">
+                <a href="/" class="logo">eastwind.biz</a>
+
+            </div>
+            <nav class="header-menu">
+                <a class="header-menu-toggle button" href="#">Меню</a>
+
+                <div class="header-menu-container">
+                    <ul class="header-menu-item list-inline">
+                        <li class="header-menu-list-item">
+                            <a href="/" class="header-menu-link">Товары</a>
+                        </li>
+                        <li class="header-menu-list-item">
+                            <a href="/check" class="header-menu-link">Проверка
+                                заказа</a>
+                        </li class=>
+                        <li class="header-menu-list-item">
+                            <a href="/reviews" class="header-menu-link">Отзывы</a>
+                        </li>
+
+                        
+                                                    <li class="header-menu-list-item"><a href="/page/1"
+                                                                 class="header-menu-link">Работа</a></li>
+                                                    <li class="header-menu-list-item"><a href="/page/2"
+                                                                 class="header-menu-link">Контакты</a></li>
+                                                    <li class="header-menu-list-item"><a href="/page/3"
+                                                                 class="header-menu-link">Условия Покупки</a></li>
+                                                    <li class="header-menu-list-item"><a href="/page/4"
+                                                                 class="header-menu-link">Опт</a></li>
+                                                    <li class="header-menu-list-item"><a href="/page/5"
+                     
+   
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="content">
+
+                    <div id="tinynav">
+                Хабаровск, Комсомольск, Благовещенск, Владивосток - ищем курьеров. ЗП 500р/клад. За открытие нового города доплачиваем большие деньги, пишите в телеграм!             </div>
+        
+
+
+
+        
+
+
+        <h5 class="hide">Главная</h5>
+<section class="home-section page-section">
+<div class="container">
+<div class="filter city">
+    <div class="filter-title-list">
+        <span class="choose">Выберите город:</span>
+        <ul class="filter-title-list-container list-inline">
+
+                            <li class="selected">
+                    <a href="/?city_id=2">Хабаровск</b>
+                </ul>
+                            <li class="">
+                    <a href="/?city_id=1">Комсомольск</a>
+                </li>
+                            <li class="">
+                    <a href="/?city_id=12">Благовещенск</a>
+                </li>
+                            <li class="">
+                    <a href="/?city_id=13">Владивосток</a>
+                </li>
+            
+
+        </ul>
+    </div>
+</div>
+<div class="filter districts">
+    <div class="filter-title-list">
+        <span class="choose">Выберите район:</span>
+        <ul class="filter-title-list-container list-inline">
+            <li class="selected"><a href="/?city_id=2" class="button">Все</a></li>
+                            <li class=""><a class="button" href="/?district_id=4">Первый микрорайон</a></li>
+                            <li class=""><a class="button" href="/?district_id=24">2й Хабаровск</a></li>
+                    </ul>
+    </div>
+</div>
+<div class="goods">
+    <ul class="goods-list list-unstyle clearfix">
+
+        
+        <li class="goods-list-item">
+            <div class="goods-list-item-inner clearfix">
+                <h3 class="goods-title">
+                    <span>Cкoрoсть (крис) 05 г</span>
+                </h3>
+
+                <div class="goods-price">150 р.</div>
+                <div class="inline">
+                    <div class="goods-availability">В наличии: Есть</div>
+                    <div class="goods-buy">
+                        <a href="/buy/3" class="button">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+    </ul>
+</div>
+</div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        var citiesParams={};
+        var districtParams={};
+         citiesParams={"header":"Выберите город"};          districtParams={"header":"Выберите район"};  
+        $('.filter.city ul.filter-title-list-container').tinyNav(citiesParams);
+        $('.filter.districts ul.filter-title-list-container').tinyNav(districtParams);
+
+    });
+</script>
+    </div>
+</div>
+
+<!-- apk pop up -->
+<!-- / apk pop up --><!-- forum pop up -->
+<!-- / forum pop up -->
+<script type="text/javascript">
+/*<![CDATA[*/
+(function (d, w) {
+            var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "/counter?_="+Math.random(b);
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", t, true);
+            } else { t(); }
+   
+        })(document, window);
+/*]]>*/
+</script>
+</body>
+</html>
